@@ -192,6 +192,7 @@ MonoBehaviour:
   maximumZoomLevel: 2
   scaleSpeed: 1
   zoomSpeed: 1
+  zoomFactor: 1
 --- !u!1 &286997684 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6731006081836748562, guid: b598932c03bf2d64a95afa24fd34933c,
@@ -24882,7 +24883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cb7046648d08124a980c32d0e6936b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentActor: {fileID: 0}
+  player: {fileID: 0}
 --- !u!4 &780244121
 Transform:
   m_ObjectHideFlags: 0

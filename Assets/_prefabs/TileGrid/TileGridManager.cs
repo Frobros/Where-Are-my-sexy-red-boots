@@ -17,7 +17,7 @@ public class TileGridManager : MonoBehaviour
     public float zoomSpeed;
     Transform mainCam;
     Scalable currentActor;
-    
+    public float zoomFactor;
 
     private void Start()
     {
@@ -61,7 +61,7 @@ public class TileGridManager : MonoBehaviour
 
     private IEnumerator ScaleTo(float toZoomLevel, bool isShrinking)
     {
-        float targetScaleFactor = 1 / Mathf.Pow(2f, 2 * toZoomLevel);
+        float targetScaleFactor = 1 / Mathf.Pow(2f, zoomFactor * toZoomLevel);
         float scalingFor = 0f;
         
         Vector3 fromScale = currentActor.transform.localScale;
@@ -87,7 +87,7 @@ public class TileGridManager : MonoBehaviour
         float movingFor = 0f;
 
         float fromDepth = mainCam.position.z;
-        float targetDepth = -10f / Mathf.Pow(2f, 2 * toZoomLevel);
+        float targetDepth = -10f / Mathf.Pow(2f, zoomFactor * toZoomLevel);
 
         while (moving)
         {
