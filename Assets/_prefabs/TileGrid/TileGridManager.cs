@@ -14,10 +14,10 @@ public class TileGridManager : MonoBehaviour
     public int maximumZoomLevel;
     
     public float scaleSpeed;
-    public float zoomSpeed;
-    Transform mainCam;
-    Scalable currentActor;
     public float zoomFactor;
+    public float scaleFactor;
+    Transform mainCam;
+    Player currentActor;
 
     private void Start()
     {
@@ -26,13 +26,12 @@ public class TileGridManager : MonoBehaviour
 
     private void Update()
     {
-        currentActor = FindObjectOfType<KeyboardHandler>().player;
+        currentActor = FindObjectOfType<Player>();
     }
 
     internal void ActivateLevel(int zoomDirection)
     {
         int toZoomLevel = currentLevel + zoomDirection;
-        Debug.Log("Jump with " + currentActor);
         if (currentActor && minimumZoomLevel <= toZoomLevel && toZoomLevel <= maximumZoomLevel)
         {
             zooming = true;
@@ -61,7 +60,7 @@ public class TileGridManager : MonoBehaviour
 
     private IEnumerator ScaleTo(float toZoomLevel, bool isShrinking)
     {
-        float targetScaleFactor = 1 / Mathf.Pow(2f, zoomFactor * toZoomLevel);
+        float targetScaleFactor = 1 / Mathf.Pow(2f, scaleFactor * toZoomLevel);
         float scalingFor = 0f;
         
         Vector3 fromScale = currentActor.transform.localScale;
@@ -91,12 +90,12 @@ public class TileGridManager : MonoBehaviour
 
         while (moving)
         {
-
+            /*
             Debug.LogWarning("Try to zoom to " + toZoomLevel
                 + " by jumping to " + targetDepth
                 + " by " + (isShrinking ? "shrinking!" : "enhancing!"));
-
-            float newDepth = Mathf.Lerp(fromDepth, targetDepth, movingFor * zoomSpeed);
+            */
+            float newDepth = Mathf.Lerp(fromDepth, targetDepth, movingFor * scaleSpeed);
             mainCam.position = new Vector3(
                 mainCam.position.x,
                 mainCam.position.y,
