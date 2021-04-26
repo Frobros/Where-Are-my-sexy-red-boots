@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyboardHandler : MonoBehaviour
 {
-    public Player player;
-    private List<Scalable> scalables;
+    Player player;
     private Vector2 direction;
+    public float mouseSensitivity;
 
     private void Start()
     {
@@ -45,9 +44,21 @@ public class KeyboardHandler : MonoBehaviour
 
         // ZOOM
         int zoomDirection = 0;
-        if (Input.GetKeyDown(KeyCode.PageUp))
+        
+        float mouseDirection = Input.GetAxis("Mouse Y");
+        if (mouseDirection != 0f)
+        Debug.Log(mouseDirection);
+
+
+        if (Input.GetKeyDown(KeyCode.PageUp)
+            || Input.GetAxis("Mouse ScrollWheel") > 0
+            || Input.GetMouseButton(1) && mouseDirection > mouseSensitivity
+        )
             zoomDirection += 1;
-        if (Input.GetKeyDown(KeyCode.PageDown))
+        if (Input.GetKeyDown(KeyCode.PageDown)
+            || Input.GetAxis("Mouse ScrollWheel") < 0f
+            || Input.GetMouseButton(1) && mouseDirection < -mouseSensitivity
+        )
             zoomDirection -= 1;
         if (zoomDirection != 0)
             player.Zoom(zoomDirection);

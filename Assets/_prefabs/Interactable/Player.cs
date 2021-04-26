@@ -65,11 +65,10 @@ public class Player : MonoBehaviour
     { 
         if (!grid.zooming)
         {
-            // Debug.Log("ZOOM!!!");
             grid.ActivateLevel(zoomDirection);
 
             scaleChildren = true;
-            scalables.StartZooming(transform);
+            scalables.StartZooming(transform, zoomDirection);
         }
     }
 }

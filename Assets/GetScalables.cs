@@ -38,12 +38,12 @@ public class GetScalables : MonoBehaviour
         }
     }
 
-    internal void StartZooming(Transform parent)
+    internal void StartZooming(Transform parent, int zoomDirection)
     {
         isScaling = true;
         foreach (Scalable s in Get())
         {
-            s.ChangeParent(parent);
+            s.ChangeParent(parent, zoomDirection);
         }
     }
 
