@@ -46,9 +46,6 @@ public class KeyboardHandler : MonoBehaviour
         int zoomDirection = 0;
         
         float mouseDirection = Input.GetAxis("Mouse Y");
-        if (mouseDirection != 0f)
-        Debug.Log(mouseDirection);
-
 
         if (Input.GetKeyDown(KeyCode.PageUp)
             || Input.GetAxis("Mouse ScrollWheel") > 0

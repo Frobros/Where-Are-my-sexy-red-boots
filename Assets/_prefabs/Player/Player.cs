@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -7,21 +8,21 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
 
     // Zoom Levels
-    TileGridManager grid;
-    
+    ScaleManager grid;
+
     // Talk
     public Talk talkTo;
     private bool talking;
     
     // Scalables
     public GetScalables scalables;
-    public bool scaleChildren;
+    public bool scaling;
+    public int zoomDir;
 
     private void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
-        grid = FindObjectOfType<TileGridManager>();
+        grid = FindObjectOfType<ScaleManager>();
         scalables = GetComponentInChildren<GetScalables>();
     }
 
@@ -30,10 +31,10 @@ public class Player : MonoBehaviour
         if (talking && talkTo.ConversationHasEnded()) talking = false;
         
         // SCALABLES
-        if (!grid.zooming && scaleChildren)
+        if (!grid.zooming && scaling)
         {
             scalables.EndZooming();
-            scaleChildren = false;
+            scaling = false;
         }
     }
 
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour
 
     public void Move(Vector2 direction)
     {
-        if (!scaleChildren)
+        if (!scaling)
         {
             Vector2 moveDirection = rb.position + (Vector2)Vector3.Normalize(direction) * movementSpeed * transform.localScale.x * Time.fixedDeltaTime;
             rb.MovePosition(moveDirection);
@@ -65,10 +66,10 @@ public class Player : MonoBehaviour
     { 
         if (!grid.zooming)
         {
+            scaling = true;
             grid.ActivateLevel(zoomDirection);
-
-            scaleChildren = true;
             scalables.StartZooming(transform, zoomDirection);
         }
     }
+
 }
