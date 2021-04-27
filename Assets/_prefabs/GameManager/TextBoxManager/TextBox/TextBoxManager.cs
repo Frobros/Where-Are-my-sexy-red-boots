@@ -37,7 +37,7 @@ public class TextBoxManager : MonoBehaviour
             if (conversation.hasEnded())
             {
                 DisableTextBox();
-                focus.alternativeTarget = null;
+                if (focus) focus.alternativeTarget = null;
             }
             else
             {

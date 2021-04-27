@@ -1,30 +1,38 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KeyboardHandler : MonoBehaviour
 {
     Player player;
     private Vector2 direction;
     public float mouseSensitivity;
-
-    private void Start()
-    {
-        player = FindObjectOfType<Player>();
-    }
+    private bool onStage;
 
     void Update()
     {
-        HandleInputs();
+        if (onStage)
+            HandleStageInputs();
+        else
+            HandleTitleInputs();
+    }
+
+    private void HandleTitleInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl))
+            StartCoroutine(FindObjectOfType<TitleProtocol>().Next());
+        if (Input.GetKeyDown(KeyCode.Escape))
+            FindObjectOfType<GameManager>().ReloadScene();
+
     }
 
     void FixedUpdate()
     {
         // MOVEMENT (1)
-        if (direction != Vector2.zero)
+        if (player)
             player.Move(direction);
     }
 
-    private void HandleInputs()
+    private void HandleStageInputs()
     {
         // MOVEMENT (0)
         direction = Vector2.zero;
@@ -63,5 +71,18 @@ public class KeyboardHandler : MonoBehaviour
         // RELOAD
         if (Input.GetKeyDown(KeyCode.R))
             FindObjectOfType<GameManager>().ReloadScene();
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            FindObjectOfType<GameManager>().LoadScene("0_title");
+    }
+
+    internal void OnLevelFinishedLoading(Scene scene)
+    {
+        onStage = scene.name != "0_title";
+        if (onStage)
+        {
+            player = FindObjectOfType<Player>();
+        }
     }
 }

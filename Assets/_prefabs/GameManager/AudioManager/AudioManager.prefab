@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &196201279801524475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8232568746439501381}
+  - component: {fileID: 7901046771223483209}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8232568746439501381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196201279801524475}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7901046771223483209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196201279801524475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30b1fb9bb86ce8346ba96093427aabad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  themes:
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 0cdb53249711c2f42b617384f00e2698, type: 3}
+    name: mmtl
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: c4ea95c6dab055347b3da83f234bdec0, type: 3}
+    name: mmtlo
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 4a5c7823c26333a4d81b429563d06518, type: 3}
+    name: mmto
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: de4ced3ab30ac0f468aae833be5971a9, type: 3}
+    name: ttl
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 42750c668385a4144835ceb75acbf56c, type: 3}
+    name: tt
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: dfe71d5c2ffe47d47ac8c193ed88eb1b, type: 3}
+    name: wct1
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 6e5f410a59db81c4c8b6a1f1d1ce1dc1, type: 3}
+    name: wct2
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: b0927f001d6fcb440a4bd38ee089d3f9, type: 3}
+    name: wctl1
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: caadf223aef07ee448fb9c31d776b918, type: 3}
+    name: wctl1
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 32a8e5ae541d25441a66cdf319416e6c, type: 3}
+    name: wctl2
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  sounds:
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 454da13ed07cfe64784fa81416351096, type: 3}
+    name: ha
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 193820b0788c1914187e2651e478ee4a, type: 3}
+    name: hahaha
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 80d790351eaa8714c8471744e6c104a0, type: 3}
+    name: hmhm
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 23d437ebe7c374f49a0253a024bec3e8, type: 3}
+    name: hm
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: a691db8da1659d945ad2bbc1e993fd4d, type: 3}
+    name: hoe
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: a04ddb957b993c14d9bd8e822d10d104, type: 3}
+    name: oh
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
+  - source: {fileID: 0}
+    clip: {fileID: 8300000, guid: ea35f20dc4c407c46aa494f90048a86d, type: 3}
+    name: pa
+    loop: 0
+    isTheme: 0
+    pitch: 1
+    volume: 1
+    isFadingOut: 0
