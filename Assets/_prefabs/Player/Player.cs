@@ -5,6 +5,9 @@ public class Player : MonoBehaviour
 {
 
     public float movementSpeed;
+    public Vector2 moveDirection;
+    public Vector3 previousPosition;
+
     Rigidbody2D rb;
 
     // Zoom Levels
@@ -57,8 +60,11 @@ public class Player : MonoBehaviour
     {
         if (!scaling)
         {
-            Vector2 moveDirection = rb.position + (Vector2)Vector3.Normalize(direction) * movementSpeed * transform.localScale.x * Time.fixedDeltaTime;
-            rb.MovePosition(moveDirection);
+            moveDirection = (Vector2)Vector3.Normalize(direction) * movementSpeed * transform.localScale.x * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + moveDirection);
+        } else
+        {
+            moveDirection = Vector2.zero;
         }
     }
 

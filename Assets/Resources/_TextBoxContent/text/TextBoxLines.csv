@@ -1,10 +1,27 @@
 Conversation ID,Name,Content
-intro,Doc Yoshida,"Ninjo, I warned you before. It's too dangerous to go alone."
-intro,Ninjo,"I have to get my revenge, even if I die. "
-intro,Ninjo,Don't get into my way or I will cut you off.
-intro,Doc Yoshida,I know. I will stay standby and try to help you survive.
+Door,Player,The Door seems blocked
 ,,
-elevator,Doc Yoshida,I can't hack this elevator. Find another way!
+Bed,Player,I can't sleep until i find my red boots
 ,,
-elevator-works,Doc Yoshida,"Finally, I got the security key! Your goal is near!"
-elevator-works,Doc Yoshida,Press [UP] to enter the elevator!
+Mouse,Mouse,"""I'm so hungry, but the cheese is to big!"""
+Mouse,Mouse,
+Mouse,Mouse,"""Thank you. If you're locked, use my entrence to find a way out"""
+,,
+Picture,Player,My Grandma made those
+,,
+Ant1,Ant1,He would be prettier with boots
+Ant2,Ant2,Fuck you
+Ant3,Ant3,Look at his ugly face
+Ant4,Ant4,MagicMan is sooo cool
+,,
+intro1,,Cameron is enjoying the calm night breeze at the sexy camp fire. The flaming lights sparkle sexily like a ruby in the red boots Cameron is wearing.
+intro1,,"Growing tired, Cameron wanders off home, ready for his sexy sleep."
+intro1,,"Oh boy, I am sooo tired he said sexily."
+,,
+intro2,,"A shadow emerges from the darkness. Magic Man, envious of Cameron's sexy red boots, takes advantage of Cameron deep sleep. "
+,,
+intro3,,"Without your boots, you are nothing! Magic Man said. This sexy red boots shall be mine!"
+,,
+intro4,,"Try escaping with the biggest rock on earth in front of your very door, dumdum"
+intro4,,ReducioEngorgio 
+intro4,,"In the morning, as soon as Cameron awakes, he realizes, that somethings not right. "

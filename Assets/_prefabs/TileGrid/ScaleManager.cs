@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class ScaleManager : MonoBehaviour
@@ -15,13 +16,22 @@ public class ScaleManager : MonoBehaviour
     public int maximumZoomLevel;
     public bool isAborting;
 
-    private int fromLevel;
-    private int toLevel;
+    internal int fromLevel;
+    internal int toLevel;
+
+    public float scaleSpeed = 1f;
+    internal int preventLevel = -1;
 
     // For modifying scale behaviour
     private float zoomFactor = 1.5f;
     private float scaleFactor = 2f;
-    public float scaleSpeed = 1f;
+
+    internal void PreventFromScalingTo(int v, bool b)
+    {
+        if (b)
+            preventLevel = v;
+        else preventLevel = -999;
+    }
 
     private void Start()
     {
@@ -42,7 +52,7 @@ public class ScaleManager : MonoBehaviour
     {
         fromLevel = currentLevel;
         toLevel = currentLevel + zoomDirection;
-        if (player && minimumZoomLevel <= toLevel && toLevel <= maximumZoomLevel)
+        if (toLevel != preventLevel && player && minimumZoomLevel <= toLevel && toLevel <= maximumZoomLevel)
         {
             zooming = true;
             StartCoroutine(ZoomTo());
@@ -74,17 +84,21 @@ public class ScaleManager : MonoBehaviour
             tileLevels[fromLevel].FadeOut(timePassed, scaleDuration);
             tileLevels[toLevel].FadeIn(timePassed, scaleDuration);
 
+            tileLevels[fromLevel].SetCollidersActive(timePassed/scaleDuration < 0.2f);
+            tileLevels[toLevel].SetCollidersActive(timePassed / scaleDuration >= 0.2f);
+
             // move camera
             MoveCameraTo(timePassed, scaleDuration, fromDepth, toDepth);
 
             // scale player
             ScaleTo(timePassed, scaleDuration, fromScale, toScale);
 
+            FindObjectOfType<AudioManager>().SetThemeLevel(timePassed, scaleDuration, fromLevel, toLevel);
+
             timePassed += Time.deltaTime;
 
             return isAborting || timePassed >= scaleDuration;
         });
-        
         if (isAborting)
         {
             yield return new WaitUntil(() =>
@@ -93,11 +107,16 @@ public class ScaleManager : MonoBehaviour
                 tileLevels[fromLevel].FadeOut(timePassed, scaleDuration);
                 tileLevels[toLevel].FadeIn(timePassed, scaleDuration);
 
+                tileLevels[fromLevel].SetCollidersActive(timePassed / scaleDuration < 0.2f);
+                tileLevels[toLevel].SetCollidersActive(timePassed / scaleDuration >= 0.2f);
+
                 // move camera
                 MoveCameraTo(timePassed, scaleDuration, fromDepth, toDepth);
 
                 // scale player
                 ScaleTo(timePassed, scaleDuration, fromScale, toScale);
+
+                FindObjectOfType<AudioManager>().SetThemeLevel(timePassed, scaleDuration, fromLevel, toLevel);
 
                 timePassed -= Time.deltaTime;
                 return timePassed <= 0f;
@@ -105,6 +124,9 @@ public class ScaleManager : MonoBehaviour
         }
 
         currentLevel = isAborting ? fromLevel : toLevel;
+        
+        FindObjectOfType<AudioManager>().SetTheme(!isAborting ? fromLevel : toLevel);
+
         for (int i = 0; i < tileLevels.Length; i++)
         {
             tileLevels[i].gameObject.SetActive(i == currentLevel);

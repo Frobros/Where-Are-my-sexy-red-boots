@@ -35,10 +35,10 @@ public class TextImporter : MonoBehaviour
             // convert text lines to conversation
             foreach (string sLine in textLines)
             {
-                string[] tableRow = conversationSnippetTextLineToStringArry(sLine);
+                string[] csvRow = conversationSnippetTextLineToStringArry(sLine);
 
                 // extract conversation snippets from CSV file
-                if (conversationId == tableRow[0])
+                if (conversationId == csvRow[0])
                 {
                     if (!conversationFound)
                     {
@@ -48,8 +48,8 @@ public class TextImporter : MonoBehaviour
                     // prepare next snippet
                     snippet = new ConversationSnippet();
                     snippet.id = snippetId;
-                    snippet.text = tableRow[2];
-                    snippet.talkerName = tableRow[1];
+                    snippet.text = csvRow[2];
+                    snippet.talkerName = csvRow[1];
                     snippet.vocals = Resources.Load<AudioClip>("_TextBoxContent/vocals/" + conversationId + "/" + snippet.id);
                     snippet.image = Resources.Load<Sprite>("_TextBoxContent/images/" + conversationId + "/" + snippet.id);
                     snippets.Add(snippet);
@@ -66,17 +66,12 @@ public class TextImporter : MonoBehaviour
         return null;
     }
 
-    internal Conversation textFileToConversation(object conversationId)
-    {
-        throw new NotImplementedException();
-    }
-
     private string[] conversationSnippetTextLineToStringArry(string sLine)
     {
         string[] naiveResult = sLine.Split(',');
         if (naiveResult.Length == 3)
             return naiveResult;
-
+        
         string actualContent = sLine.Split('\"')[1];
 
         string[] result = new string[3];
