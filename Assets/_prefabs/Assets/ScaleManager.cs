@@ -35,8 +35,9 @@ public class ScaleManager : MonoBehaviour
 
     private void Start()
     {
+        audioManager = GetAudioManagerFromActiveGameManager();
+
         mainCam = Camera.main.transform;
-        audioManager = FindObjectOfType<AudioManager>();
         player = FindObjectOfType<Player>();
         themes = audioManager.themes;
         
@@ -46,6 +47,11 @@ public class ScaleManager : MonoBehaviour
             tileLevels[i].gameObject.SetActive(isCurrentLevel);
         }
 
+    }
+
+    private AudioManager GetAudioManagerFromActiveGameManager()
+    {
+        return FindObjectOfType<GameManager>().GetActiveInstance().GetAudioManager();
     }
 
     private void Update()

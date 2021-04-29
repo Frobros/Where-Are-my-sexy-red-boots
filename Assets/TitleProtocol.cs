@@ -48,7 +48,6 @@ public class TitleProtocol : MonoBehaviour
         {
             isWorking = true;
             // Fade out title
-
             yield return _WaitUntilImageHasFadedOut(images[0]);
 
             yield return _WaitUntilConversationHasEnded("intro1");
@@ -85,8 +84,8 @@ public class TitleProtocol : MonoBehaviour
             });
 
             yield return _WaitUntilConversationHasEnded("intro4");
-
             gameManager.LoadScene("1_intro");
+            yield return null;
         }
     }
 
