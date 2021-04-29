@@ -77,13 +77,10 @@ public class TextBoxManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         active = true;
-        foreach (Transform go in textBox.GetComponentsInChildren<Transform>(true))
-        {
-            go.gameObject.SetActive(true);
-        }
+        textBox.SetActive(true);
+
         this.conversation = conversation;
         DisplayConversation();
-        textBox.SetActive(true);
         if (target) focus.alternativeTarget = target;
     }
 

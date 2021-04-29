@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class LoadCredits : MonoBehaviour
 {
-    public string name;
+    private string sceneName = "2_credits";
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>())
         {
-            FindObjectOfType<GameManager>().LoadScene("0_title");
+            FindObjectOfType<AudioManager>().FadeOutTheme();
+            FindObjectOfType<GameManager>().LoadScene(sceneName);
         }
     }
 }

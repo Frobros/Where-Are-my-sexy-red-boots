@@ -28,162 +28,55 @@ public class TitleProtocol : MonoBehaviour
             images[0].color.b,
             1f
         );
-        images[1].color = new Color(
-            images[1].color.r,
-            images[1].color.g,
-            images[1].color.b,
-            0f
-        );
         images[2].color = new Color(
             images[2].color.r,
             images[2].color.g,
             images[2].color.b,
             0f
         );
+        images[3].color = new Color(
+            images[3].color.r,
+            images[3].color.g,
+            images[3].color.b,
+            0f
+        );
     }
 
-    public IEnumerator Next()
+    public IEnumerator StartTitleProtocol()
     {
         if (!isWorking)
         {
             isWorking = true;
-            Conversation c = FindObjectOfType<TextImporter>().textFileToConversation("intro1");
-            textBoxManager.EnableTextBox(c, null);
-            bool init = false;
-            yield return new WaitUntil(() => {
-                if (init && Input.GetKeyDown(KeyCode.Space))
-                    textBoxManager.UpdateConversation();
-                else init = true;
-                return c.hasEnded();
-            });
-            step++;
-            float timePassed = 1f;
-            Color current = images[0].color;
-            images[0].color = new Color(
-                    current.r,
-                    current.g,
-                    current.b,
-                    1f
-                );
-                
-            yield return new WaitUntil(() => {
-                images[0].color = new Color(
-                    current.r,
-                    current.g,
-                    current.b,
-                    timePassed
-                );
-                audioManager.Fade(timePassed);
-                timePassed -= Time.deltaTime;
-                return timePassed <= 0f;
-            });
+            // Fade out title
 
-            audioManager.StopThemes();
-            audioManager.PlaySound("hmhm", 1f);
-            yield return new WaitUntil(() => !audioManager.isSoundPlaying("hmhm"));
-            timePassed = 0f;
-            current = images[1].color;
-            images[1].color = new Color(
-                    current.r,
-                    current.g,
-                    current.b,
-                    0f
-                );
+            yield return _WaitUntilImageHasFadedOut(images[0]);
 
-            yield return new WaitUntil(() => {
-                images[1].color = new Color(
-                    current.r,
-                    current.g,
-                    current.b,
-                    timePassed
-                );
-                audioManager.Fade(timePassed);
-                timePassed += Time.deltaTime;
-                return timePassed >= 1f;
-            });
+            yield return _WaitUntilConversationHasEnded("intro1");
+
+            // Fade out fire
+            yield return _WaitUntilImageHasFadedOut(images[1]);
+
+            yield return audioManager._WaitUntilThemeFadedOut("ttl", 1f);
+
+            // PlayOneShot
+            yield return _PlaySoundAndWaitUntilItWasPlayed("hmhmhm", 1f);
+
+            // Fade in magic man
+            yield return _WaitUntilImageHasFadedIn(images[2]);
+
+
             audioManager.PlayTheme("mmtl");
-            c = FindObjectOfType<TextImporter>().textFileToConversation("intro2");
-            textBoxManager.EnableTextBox(c, null);
-            yield return new WaitUntil(() => {
-                if (Input.GetKeyDown(KeyCode.Space))
-                    textBoxManager.UpdateConversation();
-                return c.hasEnded();
-            });
 
-            timePassed = 1f;
-            current = images[1].color;
-            images[1].color = new Color(
-                    current.r,
-                    current.g,
-                    current.b,
-                    1f
-                );
+            yield return _WaitUntilConversationHasEnded("intro2");
 
-            yield return new WaitUntil(() => {
-                images[1].color = new Color(
-                    current.r,
-                    current.g,
-                    current.b,
-                    timePassed
-                );
-                timePassed -= Time.deltaTime;
-                return timePassed <= 0f;
-            });
+            yield return _WaitUntilImageHasFadedOut(images[2]);
 
-            timePassed = 0f;
-            current = images[2].color;
-            images[2].color = new Color(
-                    current.r,
-                    current.g,
-                    current.b,
-                    0f
-                );
+            yield return _WaitUntilImageHasFadedIn(images[3]);
+            
+            yield return _WaitUntilConversationHasEnded("intro3");
 
-            yield return new WaitUntil(() => {
-                images[2].color = new Color(
-                    current.r,
-                    current.g,
-                    current.b,
-                    timePassed
-                );
-                timePassed += Time.deltaTime;
-                return timePassed >= 1f;
-            });
+            yield return _WaitUntilImageHasFadedOut(images[3]);
 
-            c = FindObjectOfType<TextImporter>().textFileToConversation("intro3");
-            textBoxManager.EnableTextBox(c, null);
-            yield return new WaitUntil(() => {
-                if (Input.GetKeyDown(KeyCode.Space))
-                    textBoxManager.UpdateConversation();
-                return c.hasEnded();
-            });
-
-            timePassed = 1f;
-            current = images[2].color;
-            images[2].color = new Color(
-                    current.r,
-                    current.g,
-                    current.b,
-                    1f
-                );
-
-            yield return new WaitUntil(() => {
-                images[2].color = new Color(
-                    current.r,
-                    current.g,
-                    current.b,
-                    timePassed
-                );
-                timePassed -= Time.deltaTime;
-                return timePassed <= 0f;
-            });
-            c = FindObjectOfType<TextImporter>().textFileToConversation("intro4");
-            textBoxManager.EnableTextBox(c, null);
-            yield return new WaitUntil(() => {
-                if (Input.GetKeyDown(KeyCode.Space))
-                    textBoxManager.UpdateConversation();
-                return c.hasEnded();
-            });
 
             audioManager.FadeOutMagicManIntro();
             yield return new WaitUntil(() =>
@@ -191,8 +84,74 @@ public class TitleProtocol : MonoBehaviour
                 return !audioManager.isThemePlaying("mmtlo");
             });
 
+            yield return _WaitUntilConversationHasEnded("intro4");
+
             gameManager.LoadScene("1_intro");
         }
+    }
+
+    private object _WaitUntilImageHasFadedIn(Image image)
+    {
+        float timePassed = 0f;
+        Color current = image.color;
+        image.color = new Color(
+                current.r,
+                current.g,
+                current.b,
+                0f
+            );
+        return new WaitUntil(() => {
+            image.color = new Color(
+                current.r,
+                current.g,
+                current.b,
+                timePassed
+            );
+            timePassed += Time.deltaTime;
+            return timePassed >= 1f;
+        });
+    }
+
+    WaitUntil _WaitUntilImageHasFadedOut(Image image)
+    {
+        float timePassed = 1f;
+
+        Color current = image.color;
+        image.color = new Color(
+                current.r,
+                current.g,
+                current.b,
+                1f
+            );
+
+        return new WaitUntil(() => {
+            image.color = new Color(
+                current.r,
+                current.g,
+                current.b,
+                timePassed
+            );
+            timePassed -= Time.deltaTime;
+            return timePassed <= 0f;
+        });
+    }
+
+    private WaitUntil _WaitUntilConversationHasEnded(string conversationId)
+    {
+        Conversation c = FindObjectOfType<TextImporter>().textFileToConversation(conversationId);
+        textBoxManager.EnableTextBox(c, null);
+        return new WaitUntil(() => {
+            if (Input.GetKeyDown(KeyCode.Space))
+                textBoxManager.UpdateConversation();
+                return c.hasEnded();
+            }
+        );
+    }
+
+    private WaitUntil _PlaySoundAndWaitUntilItWasPlayed(string soundName, float volumeBetween0and1)
+    {
+        audioManager.PlaySound(soundName);
+        return new WaitUntil(() => !audioManager.isSoundPlaying(soundName));
     }
 }
 

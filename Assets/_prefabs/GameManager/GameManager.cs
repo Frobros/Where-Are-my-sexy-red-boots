@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     private KeyboardHandler keyboard;
     bool isLoading = false;
 
-    private void Awake()
+    void Awake()
     {
         if (instance != null && instance != this)
         {
@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string name)
     {
+        TitleProtocol title = FindObjectOfType<TitleProtocol>();
+
         if (!isLoading)
         {
             isLoading = true;

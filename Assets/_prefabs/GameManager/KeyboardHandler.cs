@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class KeyboardHandler : MonoBehaviour
@@ -6,23 +7,36 @@ public class KeyboardHandler : MonoBehaviour
     Player player;
     private Vector2 direction;
     public float mouseSensitivity;
+    private bool onTitle;
     private bool onStage;
+    private bool onCredits;
+    private bool initialized;
 
     void Update()
     {
         if (onStage)
             HandleStageInputs();
+        else if (onCredits)
+            HandleCreditInput();
         else
             HandleTitleInputs();
     }
 
-    private void HandleTitleInputs()
+    private void HandleCreditInput()
     {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl))
-            StartCoroutine(FindObjectOfType<TitleProtocol>().Next());
-        if (Input.GetKeyDown(KeyCode.Escape))
-            FindObjectOfType<GameManager>().ReloadScene();
+        {
+            FindObjectOfType<GameManager>().LoadScene("0_title");
+        }
+    }
 
+    private void HandleTitleInputs()
+    {
+        if (!initialized && (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl)))
+        {
+            StartCoroutine(FindObjectOfType<TitleProtocol>().StartTitleProtocol());
+            initialized = true;
+        }
     }
 
     void FixedUpdate()
@@ -48,7 +62,7 @@ public class KeyboardHandler : MonoBehaviour
 
         // ATTACK
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl))
-            player.Action(direction);
+            player.Action();
 
         // ZOOM
         int zoomDirection = 0;
@@ -79,7 +93,10 @@ public class KeyboardHandler : MonoBehaviour
 
     internal void OnLevelFinishedLoading(Scene scene)
     {
-        onStage = scene.name != "0_title";
+        initialized = false;
+        onTitle = scene.name == "0_title";
+        onStage = scene.name == "1_intro";
+        onCredits = scene.name == "2_credits";
         if (onStage)
         {
             player = FindObjectOfType<Player>();
