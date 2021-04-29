@@ -1,56 +1,67 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 [System.Serializable]
-public class Sound
+public abstract class Audio
 {
-    [HideInInspector]
-    public AudioSource source;
-    public AudioClip clip;
+    protected AudioSource source;
+    
+    [SerializeField]
+    protected AudioClip clip;
 
-    public string name;
+    [SerializeField]
+    public string id;
 
-    [HideInInspector]
-    public bool loop;
-    [HideInInspector]
-    public bool isTheme;
-
-    public float pitch = 1F;
-    public float volume = 1f;
-
-    [HideInInspector]
-    public bool isFadingOut = false;
-    private float fadeOutTargetVolume = .2f;
-    private float fadeOutSpeed = 4f;
-    private float fadeInSpeed = 4f;
-    private bool isFadingIn;
-
-    public IEnumerator FadeOut()
-    {
-        isFadingOut = true;
-        source.volume = volume;
-        while (source.volume > fadeOutTargetVolume)
-        {
-            source.volume -= fadeOutSpeed * Time.deltaTime;
-            yield return null;
-        }
-        source.Stop();
-        isFadingOut = false;
-        yield return null;
+    public virtual void _InitializeAudioSource(AudioSource source) {
+        Debug.LogWarning("No Implementation provided");
     }
 
-    internal IEnumerator FadeIn()
+    internal float getVolume() { return source.volume; }
+
+    internal void setVolume(float volume) { source.volume = volume; }
+
+    internal float getTime() { return source.time; }
+
+    internal void setTime(float time) { source.time = time; }
+
+    internal void setLoop(bool loop) { source.loop = loop; }
+
+    internal bool isPlaying() { return source.isPlaying; }
+
+
+    internal void Play() { if (!isPlaying()) source.Play(); }
+
+    internal void Stop() { source.Stop(); }
+
+
+}
+
+    
+
+[System.Serializable]
+public class Sound : Audio
+{
+    public override void _InitializeAudioSource(AudioSource source)
     {
-        isFadingIn = true;
-        source.volume = 0f;
-        source.Play();
-        while (source.volume < volume)
-        {
-            source.volume += fadeInSpeed * Time.deltaTime;
-            yield return null;
-        }
-        isFadingIn = false;
-        yield return null;
+        this.source = source;
+        this.source.clip = this.clip;
+        this.source.pitch = 1f;
+        this.source.volume = 1f;
+        this.source.loop = false;
+    } 
+
+}
+
+[System.Serializable]
+public class Theme : Audio
+{
+    public float initialVolume;
+    public override void _InitializeAudioSource(AudioSource source)
+    {
+        this.source = source;
+        this.source.clip = this.clip;
+        this.source.pitch = 1f;
+        this.source.volume = 1f;
+        this.source.loop = true;
     }
 }

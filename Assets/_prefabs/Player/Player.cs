@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     {
         if (talking && talkTo.ConversationHasEnded()) talking = false;
         
-        // SCALABLES
+        // Reset Parents of Scalables
         if (!grid.zooming && scaling)
         {
             scalables.EndZooming();
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Action(Vector2 vector2)
+    public void Action()
     {
         if (talkTo && !talking)
         {
@@ -77,5 +77,4 @@ public class Player : MonoBehaviour
             scalables.StartZooming(transform, zoomDirection);
         }
     }
-
 }

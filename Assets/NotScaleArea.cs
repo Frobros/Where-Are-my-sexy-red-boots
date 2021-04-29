@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class NotScaleArea : MonoBehaviour
 {
+    int preventLevel = 0;
     public bool prevented;
     ScaleManager scaleManager;
 
@@ -10,12 +11,11 @@ public class NotScaleArea : MonoBehaviour
         scaleManager = FindObjectOfType<ScaleManager>();
     }
 
-
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Player>())
         {
-            scaleManager.PreventFromScalingTo(0, true);
+            scaleManager.PreventFromScalingTo(preventLevel, true);
         }
     }
 
@@ -23,7 +23,7 @@ public class NotScaleArea : MonoBehaviour
     {
         if (collision.GetComponent<Player>())
         {
-            scaleManager.PreventFromScalingTo(0, false);
+            scaleManager.PreventFromScalingTo(preventLevel, false);
         }
     }
 }

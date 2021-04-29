@@ -17,45 +17,45 @@ public class TransitionLevel : MonoBehaviour
         renderers = GetComponentsInChildren<Renderer>();
     }
 
-    public void FadeOut(float transitionFor, float inSec)
+    public void FadeOut(float scalingProgress)
     {
-        float toAlpha = Mathf.Clamp(1f - transitionFor / inSec , 0f, 1f);
-        for (int i = 0; i < renderers.Length; i++)
-        {
-            Color current = renderers[i].material.color;
-            renderers[i].material.color = new Color(
-                current.r,
-                current.g,
-                current.b,
-                toAlpha
-            );
-        }
-
+        FadeFromAlphaToAlpha(0f, 1f, scalingProgress);
+        SetCollidersActive(scalingProgress < 0.2f);
     }
 
-    public void FadeIn(float transitionFor, float inSec)
+    public void FadeIn(float scalingProgress)
     {
-        float toAlpha = Mathf.Clamp(transitionFor / inSec, 0f, 1f);
+        FadeFromAlphaToAlpha(0f, 1f, scalingProgress);
+        SetCollidersActive(scalingProgress >= 0.2f);
+    }
 
-        for (int i = 0; i < renderers.Length; i++)
+    private void FadeFromAlphaToAlpha(float gradient, float fromAlpha, float toAlpha)
+    {
+        if (renderers != null)
         {
-            Color current = renderers[i].material.color;
-            renderers[i].material.color = new Color(
-                current.r,
-                current.g,
-                current.b,
-                toAlpha
-            );
+            float newAlpha = Mathf.Clamp(fromAlpha + gradient * (toAlpha - fromAlpha), fromAlpha, toAlpha);
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                Color current = renderers[i].material.color;
+                renderers[i].material.color = new Color(
+                    current.r,
+                    current.g,
+                    current.b,
+                    newAlpha
+                );
+            }
         }
     }
 
     public void SetCollidersActive(bool active)
     {
         collidersActive = active;
-        foreach (Collider2D col in collidersInLevel)
+        if (collidersInLevel != null)
         {
-            col.enabled = active;
+            foreach (Collider2D col in collidersInLevel)
+            {
+                col.enabled = active;
+            }
         }
     }
-
 }

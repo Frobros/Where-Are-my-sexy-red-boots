@@ -1,256 +1,212 @@
 ﻿using System;
 using System.Collections;
+using System.Runtime.Serialization;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] themes;
+    public Theme[] themes;
     public Sound[] sounds;
-    internal bool startRound;
-    internal bool endRound;
-    private float fadeOutSpeed = 5f;
+
+    internal void FadeOutTheme()
+    {
+        foreach (Theme theme in themes)
+        {
+            if (theme.isPlaying()) FadeOutTheme(theme.id);
+        }
+    }
 
     private void Awake()
     {
-        foreach (Sound theme in themes)
+        foreach (Theme theme in themes)
         {
-            theme.source = gameObject.AddComponent<AudioSource>();
-            theme.source.clip = theme.clip;
-            theme.source.pitch = theme.pitch;
-            theme.source.volume = theme.volume;
-            theme.source.loop = true;
-            theme.isTheme = true;
+            theme._InitializeAudioSource(gameObject.AddComponent<AudioSource>());
         }
 
         foreach (Sound sound in sounds)
         {
-            sound.source = gameObject.AddComponent<AudioSource>();
-            sound.source.clip = sound.clip;
-            sound.source.pitch = sound.pitch;
-            sound.source.volume = sound.volume;
-            sound.source.loop = false;
-            sound.isTheme = false;
+            sound._InitializeAudioSource(gameObject.AddComponent<AudioSource>());
+        }
+    }
+
+    internal void OnLevelFinishedLoading(Scene scene)
+    {
+        if (scene.name == "0_title")
+        {
+            PlayTheme("ttl");
+        }
+        else if (scene.name == "1_intro")
+        {
+            PlayTheme("wctl1");
         }
     }
 
     internal void FadeOutMagicManIntro()
     {
-        Sound currentTheme = Array.Find<Sound>(themes, t => t.source.isPlaying);
-        Sound nextTheme = Array.Find<Sound>(themes, t => t.name == "mmtlo");
+        Theme currentTheme = GetCurrentlyPlayedThemes()[0];
+        Theme nextTheme = GetThemeById("mmtlo");
 
-        int beat = (int) (currentTheme.source.time / 1.87425f);
-        float remainder = currentTheme.source.time - beat * 1.87425f;
-        currentTheme.source.Stop();
-        nextTheme.source.time = 2f * 1.87425f + remainder;
-        nextTheme.source.Play();
-        nextTheme.source.loop = false;
+        int beat = (int) (currentTheme.getTime() / 1.87425f);
+        float remainder = currentTheme.getTime() - beat * 1.87425f;
+        currentTheme.Stop();
+        nextTheme.setTime(2f * 1.87425f + remainder);
+        nextTheme.setLoop(false);
+        nextTheme.Play();
     }
 
-    internal void OnLevelFinishedLoading(Scene scene)
+    internal Theme[] GetAllThemes()
     {
-        ResetThemes();
-        if (scene.name == "0_title")
-        {
-            StartCoroutine(FadeToTheme("ttl"));
-        }
-        else if (scene.name == "1_intro")
-        {
-            StartCoroutine(FadeToTheme("wctl1"));
-        }
-    }
-
-    private void ResetThemes()
-    {
-        foreach (Sound t in themes)
-        {
-            t.source.volume = t.volume;
-        }
-    }
-
-    public IEnumerator FadeToTheme(string name)
-    {
-        Sound currentTheme = Array.Find<Sound>(themes, t => t.source.isPlaying);
-        if (currentTheme == null)
-        {
-            PlayTheme(name);
-        }
-        else
-        {
-            Sound theme1 = Array.Find<Sound>(themes, t => t.name == name);
-            yield return new WaitUntil(() =>
-            {
-                currentTheme.source.volume -= Time.deltaTime * fadeOutSpeed;
-                return currentTheme.source.volume < 0.1f;
-            });
-
-            currentTheme.source.Stop();
-            currentTheme.source.volume = currentTheme.volume;
-            theme1.source.Play();
-            float x = currentTheme.source.time;
-        }
-
+        return themes;
     }
 
     internal void StopThemes()
     {
-        Sound[] currentThemes = Array.FindAll<Sound>(themes, t => t.source.isPlaying);
-        foreach (Sound t in currentThemes)
+        Theme[] currentThemes = GetCurrentlyPlayedThemes();
+        foreach (Theme t in currentThemes)
         {
-            t.source.Stop();
+            t.Stop();
         }
     }
 
-    internal void Fade(float timePassed)
+    internal bool isSoundPlaying(string id)
     {
-        Sound currentTheme = Array.Find<Sound>(themes, t => t.source.isPlaying);
-        if (currentTheme != null)
-            currentTheme.source.volume = timePassed;
-    }
-
-    internal void SetThemeLevel(float timePassed, float scaleDuration, int fromLevel, int toLevel)
-    {
-        string fromName = "wctl" + (fromLevel + 1);
-        string toName = "wctl" + (toLevel + 1);
-        Sound fromTheme = Array.Find<Sound>(themes, t => t.name == fromName);
-        Sound toTheme = Array.Find<Sound>(themes, t => t.name == toName);
-        toTheme.source.time = fromTheme.source.time;
-        if (!toTheme.source.isPlaying) toTheme.source.Play();
-
-        fromTheme.source.volume = Mathf.Lerp(1f, 0f, timePassed / scaleDuration);
-        toTheme.source.volume = Mathf.Lerp(0f, 1f, timePassed / scaleDuration);
-    }
-
-    private void StartRound()
-    {
-        if (startRound)
-        {
-            Sound currentTheme = Array.Find<Sound>(themes, t => t.source.isPlaying);
-            if (currentTheme == null)
-            {
-                PlayTheme("stage_theme");
-                startRound = false;
-            }
-            else
-            {
-                Sound theme1 = Array.Find<Sound>(themes, t => t.name == "stage_theme");
-                float x = currentTheme.source.time;
-                if (x % 6f < 0.05f && x <= 36f
-                    || (x + 3f) % 6f < 0.05f && x >= 39f && x <= 81f) 
-                {
-                    currentTheme.source.Stop();
-                    theme1.source.time = 0f;
-                    theme1.source.volume = theme1.volume;
-                    theme1.source.Play();
-                    startRound = false;
-                }
-            }
-        }
-    }
-
-    internal void SetTheme(int from)
-    {
-        string fromName = "wctl" + (from + 1);
-        Sound fromTheme = Array.Find<Sound>(themes, t => t.name == fromName);
-        fromTheme.source.Stop();
-    }
-
-    private void EndRound()
-    {
-        if (endRound)
-        {
-            Sound currentTheme = Array.Find<Sound>(themes, t => t.source.isPlaying);
-            Sound theme1 = Array.Find<Sound>(themes, t => t.name == "title_theme");
-            float x = currentTheme.source.time;
-            if (x % 6f < 0.1f)
-            {
-                currentTheme.source.Stop();
-                theme1.source.time = 36f;
-                theme1.source.volume = theme1.volume;
-                theme1.source.Play();
-                endRound = false;
-            }
-        }
-    }
-
-    public void PlaySound(string name, float pitch)
-    {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s == null)
-        {
-            Debug.LogError("Sound: " + name + " was not found");
-            return;
-        }
-        else if (s.source.isPlaying)
-        {
-            s.source.Stop();
-        }
-        s.source.pitch = pitch;
-        // s.source.volume = s.volume;
-        s.source.Play();
-    }
-
-    internal bool isSoundPlaying(string name)
-    {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = GetSoundById(id);
         if (s == null)
         {
             return false;
         }
-        return s.source.isPlaying;
+        return s.isPlaying();
     }
-    internal bool isThemePlaying(string name)
+
+    internal bool isThemePlaying(string id)
     {
-        Sound s = Array.Find(themes, theme => theme.name == name);
+        Theme s = GetThemeById(id);
         if (s == null)
         {
             return false;
         }
-        return s.source.isPlaying;
+        return s.isPlaying();
     }
 
-    public void PlayTheme(string name)
+    public void StopSound(string id)
     {
-        Sound t1 = Array.Find<Sound>(themes, theme => theme.name == name);
-        if (t1 == null)
-        {
-            Debug.Log("Theme: " + name + " was not found");
-            return;
-        }
-        else if (t1.source.isPlaying)
-        {
-            Debug.Log("Theme: " + name + " is already Playing");
-            return;
-        }
-        t1.source.Play();
-    }
-
-    internal void PlaySoundWithRandomPitch(string name)
-    {
-        float pitch = UnityEngine.Random.Range(.9f, 1.1f);
-        PlaySound(name, pitch);
-    }
-
-    public void StopSound(string name)
-    {
-        Sound sound = Array.Find(sounds, s => s.name == name);
+        Sound sound = GetSoundById(id);
         if (sound == null)
         {
-            Debug.LogError("Sound: " + name + " was not found");
+            Debug.LogError("Sound: " + id + " was not found");
             return;
         }
-
-        sound.source.Stop();
+        sound.Stop();
     }
 
-    public void StopAllSounds()
+    public void FadeOutTheme(string id)
     {
-        foreach (Sound sound in sounds)
+        StartCoroutine(FadeOutThemeInCoroutine(id));
+    }
+
+
+    public void PlaySound(string id)
+    {
+        Sound s = GetSoundById(id);
+        if (s != null)
         {
-            if (!sound.isFadingOut)
-            {
-                StartCoroutine(sound.FadeOut());
-            }
+            s.Play();
         }
+    }
+
+    public void PlayTheme(string id)
+    {
+        Theme t1 = GetThemeById(id);
+        if (t1.isPlaying())
+        {
+            Debug.Log("Theme: " + id + " is already Playing");
+            return;
+        }
+        t1.Play();
+    }
+
+    public Sound GetSoundById(string id)
+    {
+        Sound sound = Array.Find(sounds, s => s.id == id);
+        if (sound == null)
+        {
+            Debug.LogError("Theme: " + id + " was not found");
+            return null;
+        }
+        else return sound;
+    }
+
+    public Theme GetThemeById(string id)
+    {
+        Theme theme = Array.Find(themes, t => t.id == id);
+        if (theme == null)
+        {
+            Debug.LogError("Theme: " + id + " was not found");
+            return null;
+        }
+        else return theme;
+    }
+
+    private Theme[] GetCurrentlyPlayedThemes()
+    {
+        return Array.FindAll<Theme>(themes, t => t.isPlaying());
+    }
+
+    public WaitUntil _WaitUntilThemeFadedOut(string themeId, float inSeconds)
+    {
+        Theme theme = GetThemeById(themeId);
+        return _WaitUntilThemeFadedToVolume(theme, inSeconds, 0f);
+    }
+
+    private WaitUntil _WaitUntilThemeFadedToVolume(Theme theme, float inSeconds, float newVolume)
+    {
+        float fromVolume = theme.getVolume();
+        return _WaitUntilThemeFadedFromVolumeToVolume(theme, inSeconds, fromVolume, newVolume);
+    }
+
+    private WaitUntil _WaitUntilThemeFadedFromVolumeToVolume(Theme theme, float inSeconds, float startVolume, float newVolume)
+    {
+        float fromVolume = startVolume;
+        float volumeDragPerSecond = (newVolume - fromVolume) / inSeconds;
+        float timePassed = 0f;
+        return new WaitUntil(() =>
+        {
+            timePassed += Time.deltaTime;
+            theme.setVolume(theme.getVolume() + volumeDragPerSecond * Time.deltaTime);
+            return timePassed >= inSeconds;
+        });
+    }
+
+    public WaitUntil _WaitUntilThemeFadedIn(Theme theme, float inSeconds, float newVolume)
+    {
+        return _WaitUntilThemeFadedToVolume(theme, inSeconds, newVolume);
+    }
+
+    private IEnumerator FadeOutThemeInCoroutine(string id)
+    {
+        yield return _WaitUntilThemeFadedOut(id, 1f);
+    }
+
+    private WaitUntil _WaitUntilCrossFadedFromThemeToTheme(string fromId, string toId, float inSeconds)
+    {
+        Theme fromTheme = GetThemeById(fromId);
+        Theme toTheme = GetThemeById(toId);
+        toTheme.setTime(fromTheme.getTime());
+        toTheme.setVolume(0f);
+        toTheme.Play();
+
+        float timePassed = 0f;
+        float fromVolume = fromTheme.getVolume();
+        float volumeGradient = fromVolume / inSeconds;
+
+
+        return new WaitUntil(() =>
+        {
+            timePassed += Time.deltaTime;
+            fromTheme.setVolume(fromVolume - volumeGradient * timePassed);
+            fromTheme.setVolume(volumeGradient * timePassed);
+            return timePassed >= inSeconds;
+        });
     }
 }

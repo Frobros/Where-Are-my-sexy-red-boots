@@ -6,6 +6,10 @@ public class FollowTarget : MonoBehaviour
     public Transform alternativeTarget;
     public float smoothDamp;
 
+    void Start()
+    {
+        target2D = FindObjectOfType<Player>().transform;
+    }
     void LateUpdate()
     {
         Transform target = alternativeTarget ? alternativeTarget : target2D;

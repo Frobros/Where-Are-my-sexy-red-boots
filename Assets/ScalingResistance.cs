@@ -10,7 +10,7 @@ public class ScalingResistance : MonoBehaviour
     }
 
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (grid.zooming)
         {
