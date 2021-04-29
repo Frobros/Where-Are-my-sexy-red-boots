@@ -17,7 +17,7 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void InitializeAudioSources()
     {
         foreach (Theme theme in themes)
         {
@@ -32,6 +32,9 @@ public class AudioManager : MonoBehaviour
 
     internal void OnLevelFinishedLoading(Scene scene)
     {
+
+        if (!themes[0].getAudioSource()) InitializeAudioSources();
+
         if (scene.name == "0_title")
         {
             PlayTheme("ttl");

@@ -17,6 +17,7 @@ public abstract class Audio
     }
 
     internal float getVolume() { return source.volume; }
+    internal AudioSource getAudioSource() { return source; }
 
     internal void setVolume(float volume) { source.volume = volume; }
 

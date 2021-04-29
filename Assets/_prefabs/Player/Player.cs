@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     
     // Scalables
     public GetScalables scalables;
-    public bool scaling;
+    public bool scalingChildren;
     public int zoomDir;
 
     private void Start()
@@ -34,10 +34,10 @@ public class Player : MonoBehaviour
         if (talking && talkTo.ConversationHasEnded()) talking = false;
         
         // Reset Parents of Scalables
-        if (!grid.zooming && scaling)
+        if (!grid.zooming && scalingChildren)
         {
             scalables.EndZooming();
-            scaling = false;
+            scalingChildren = false;
         }
     }
 
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
 
     public void Move(Vector2 direction)
     {
-        if (!scaling)
+        if (!scalingChildren)
         {
             moveDirection = (Vector2)Vector3.Normalize(direction) * movementSpeed * transform.localScale.x * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveDirection);
@@ -72,8 +72,9 @@ public class Player : MonoBehaviour
     { 
         if (!grid.zooming)
         {
-            scaling = true;
             grid.ActivateLevel(zoomDirection);
+
+            scalingChildren = ;
             scalables.StartZooming(transform, zoomDirection);
         }
     }
