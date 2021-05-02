@@ -3,15 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - TextBoxBackground
+  - TextBox
+  - TextBoxAuthor
+  - TextBoxContent
+  - PreventArea
+  - Cheese
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - ScalingPreventer
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

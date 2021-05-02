@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [System.Serializable]
 public abstract class Audio
@@ -29,15 +28,10 @@ public abstract class Audio
 
     internal bool isPlaying() { return source.isPlaying; }
 
-
     internal void Play() { if (!isPlaying()) source.Play(); }
 
     internal void Stop() { source.Stop(); }
-
-
 }
-
-    
 
 [System.Serializable]
 public class Sound : Audio

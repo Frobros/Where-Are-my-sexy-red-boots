@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     private AudioManager audioManager;
     private KeyboardHandler keyboard;
+    private TextBoxManager textBoxManager;
     bool isLoading = false;
 
     void Awake()
@@ -52,8 +53,11 @@ public class GameManager : MonoBehaviour
             isLoading = false;
             audioManager = GetComponentInChildren<AudioManager>();
             keyboard = GetComponent<KeyboardHandler>();
+            textBoxManager = GetComponent<TextBoxManager>();
+
             audioManager.OnLevelFinishedLoading(scene);
             keyboard.OnLevelFinishedLoading(scene);
+            textBoxManager.OnLevelFinishedLoading();
         }
     }
 

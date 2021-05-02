@@ -3,9 +3,9 @@ Door,Player,The Door seems blocked
 ,,
 Bed,Player,I can't sleep until i find my red boots
 ,,
-Mouse,Mouse,"""I'm so hungry, but the cheese is to big!"""
+Mouse,Mouse,"I'm so hungry, but the cheese is to big!"
 Mouse,Mouse,
-Mouse,Mouse,"""Thank you. If you're locked, use my entrence to find a way out"""
+Mouse,Mouse,"Thank you. If you're locked, use my entrence to find a way out!"
 ,,
 Picture,Player,My Grandma made those
 ,,
@@ -18,10 +18,31 @@ intro1,,Cameron is enjoying the calm night breeze at the sexy camp fire. The fla
 intro1,,"Growing tired, Cameron wanders off home, ready for his sexy sleep."
 intro1,,"Oh boy, I am sooo tired he said sexily."
 ,,
-intro2,,"A shadow emerges from the darkness. Magic Man, envious of Cameron's sexy red boots, takes advantage of Cameron deep sleep. "
+intro2,,"A shadow emerges from the darkness. Magic Man, envious of Cameron's sexy red boots, takes advantage of Cameron's deep sleep. "
 ,,
-intro3,Magic Man,"Without your boots, you are nothing! This sexy red boots shall be mine!"
+intro3,Magic Man,"Without your boots, you are nothing! These sexy red boots shall be mine!"
 ,,
-intro4,Magic Man,"Try escaping with the biggest rock on earth in front of your very door, dumdum"
-intro4,Magic Man,ReducioEngorgio 
+intro4,Magic Man,"Try escaping with the biggest rock on earth in front of your very door, dumdum!"
+intro4,Magic Man,ReducioEngorgio!
 intro4,,"In the morning, as soon as Cameron awakes, he realizes, that somethings not right. "
+,,
+mouse0_0,Mouse,Eeek eek!
+,,
+mouse0_1,Mouse,Eeekk eek eeek! Eeek eek!
+,,
+mouse0_2,Mouse,Eeekk eek eeek! <3
+mouse0_2,Mouse,Eeekk eek eeek! Eeek ek eeek!
+,,
+mouse1_0,Mouse,Sooooo hungry!
+mouse1_0,Mouse,I can't remember where I put my cheese...
+,,
+mouse1_1,Mouse,"Why is the cheese so small?? Cameron, can't you do something about it?"
+,,
+mouse1_2,Mouse,WOOW! This is the perfect size <3
+mouse1_2,Mouse,Thank you so much! You're the best neighbour someone can have!
+,,
+mouse2_0,Mouse,I can't hear you Cameron. You're just tooo small.
+,,
+mouse2_1,Mouse,I can't hear you Cameron. You're just tooo small.
+,,
+mouse2_2,Mouse,I can't hear you Cameron. You're just tooo small.
