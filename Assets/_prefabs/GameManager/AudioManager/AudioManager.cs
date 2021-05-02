@@ -37,10 +37,12 @@ public class AudioManager : MonoBehaviour
 
         if (scene.name == "0_title")
         {
+            StopThemes();
             PlayTheme("ttl");
         }
         else if (scene.name == "1_intro")
         {
+            StopThemes();
             PlayTheme("wctl1");
         }
     }
@@ -68,6 +70,7 @@ public class AudioManager : MonoBehaviour
         Theme[] currentThemes = GetCurrentlyPlayedThemes();
         foreach (Theme t in currentThemes)
         {
+            t.getAudioSource().volume = t.initialVolume;
             t.Stop();
         }
     }
