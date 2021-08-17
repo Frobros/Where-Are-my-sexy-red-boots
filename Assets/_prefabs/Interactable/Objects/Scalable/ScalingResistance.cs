@@ -20,7 +20,7 @@ public class ScalingResistance : MonoBehaviour
     {
         if (hasAborted)
         {
-            if (pocket.isPocketScaling())
+            if (pocket.isScaling())
             {
                 spriteRenderer.color = Color.red;
             }
@@ -34,7 +34,7 @@ public class ScalingResistance : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (!collider.isTrigger && pocket.isPocketScaling() && !pocket.isAborting && collider.tag != "Player" && collider.tag != "PreventArea")
+        if (!collider.isTrigger && pocket.isScaling() && !pocket.isAborting() && collider.tag != "Player" && collider.tag != "PreventArea")
         {
             Debug.LogWarning(transform.parent.gameObject.name + ": Sorry! Not in my house, " + collider.name);
             Abort();

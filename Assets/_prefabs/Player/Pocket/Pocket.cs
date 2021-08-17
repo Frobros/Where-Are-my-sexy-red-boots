@@ -7,14 +7,15 @@ public class Pocket : MonoBehaviour
     [SerializeField]
     private List<Scalable> scalables = new List<Scalable>();
     private ScaleManager grid;
-    bool isScaling = false;
-    internal bool isAborting = false;
-    bool isPocketReset = true;
+    [SerializeField] private bool _isScaling = false;
+    [SerializeField] private bool _isAborting = false;
+    private bool isPocketReset = true;
     private int scaleDirection;
 
 
-    public bool isPocketScalingChildren() { return scalables.Count > 0 && isScaling; }
-    public bool isPocketScaling() { return isScaling; }
+    public bool isScalingChildren() { return scalables.Count > 0 && _isScaling; }
+    public bool isScaling() { return _isScaling; }
+    public bool isAborting() { return _isAborting; }
 
     public bool atLeastOneChildToScaleExists() { return scalables.Count > 0; }
     private bool isNewScalable(Scalable scalable) { return !scalables.Contains(scalable); }
@@ -34,11 +35,11 @@ public class Pocket : MonoBehaviour
 
     private void Update() { 
         // Reset Parents of Scalables
-        if (!grid.isScaling && isScaling)
+        if (!grid.isScaling && _isScaling)
         {
-            isScaling = false;
+            _isScaling = false;
             EndScalingChildren();
-        } else if (!isScaling)
+        } else if (!_isScaling)
             isPocketReset = true;
     }
 
@@ -49,7 +50,7 @@ public class Pocket : MonoBehaviour
             isPocketReset = false;
             if (!grid.isScaling)
             {
-                isScaling = true;
+                _isScaling = true;
                 scaleDirection = _scaleDirection;
                 if (atLeastOneChildToScaleExists())
                 {
@@ -74,7 +75,7 @@ public class Pocket : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (!isScaling)
+        if (!_isScaling)
         {
             Scalable scalable = other.GetComponentInParent<Scalable>();
             if (scalable != null && isNewScalable(scalable)) {
@@ -85,7 +86,7 @@ public class Pocket : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!isPocketScalingChildren())
+        if (!isScalingChildren())
         {
 
             Scalable scalable = other.GetComponentInParent<Scalable>();
