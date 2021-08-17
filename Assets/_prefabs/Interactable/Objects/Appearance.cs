@@ -106,9 +106,9 @@ public class Appearance : MonoBehaviour
             case CanSeeFrom.BOTH_DIRECTIONS:
                 return true;
             case CanSeeFrom.ABOVE:
-                return isBelowRange(currentLevel);
-            case CanSeeFrom.BELOW:
                 return isAboveRange(currentLevel);
+            case CanSeeFrom.BELOW:
+                return isBelowRange(currentLevel);
             default:
                 return false;
         }
@@ -116,12 +116,12 @@ public class Appearance : MonoBehaviour
 
     private bool isBelowRange(int currentLevel)
     {
-        return currentLevel <= getActiveFrom();
+        return currentLevel >= getActiveFrom();
     }
 
     private bool isAboveRange(int currentLevel)
     {
-        return currentLevel >= getActiveTo();
+        return currentLevel <= getActiveTo();
     }
 
     private void FadeOut(float scalingProgress)
