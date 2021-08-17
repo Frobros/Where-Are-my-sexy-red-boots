@@ -716,6 +716,7 @@ GameObject:
   - component: {fileID: 76150209}
   - component: {fileID: 76150208}
   - component: {fileID: 76150207}
+  - component: {fileID: 76150211}
   m_Layer: 0
   m_Name: plant
   m_TagString: Untagged
@@ -836,6 +837,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &76150211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76150205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!4 &118735550 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2815418054685409539, guid: eea4651422f24874dadd59e3f4935647,
@@ -929,6 +950,7 @@ GameObject:
   - component: {fileID: 152529365}
   - component: {fileID: 152529364}
   - component: {fileID: 152529367}
+  - component: {fileID: 152529368}
   m_Layer: 0
   m_Name: bookShelf (4)
   m_TagString: Untagged
@@ -1059,6 +1081,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 0
   runOnlyOnce: 0
+--- !u!114 &152529368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152529362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!4 &164162514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2522639556048443758, guid: 9b95037caf5464341a435b1bf4137e9e,
@@ -1078,6 +1120,7 @@ GameObject:
   - component: {fileID: 170634916}
   - component: {fileID: 170634915}
   - component: {fileID: 170634914}
+  - component: {fileID: 170634918}
   m_Layer: 0
   m_Name: bookShelf
   m_TagString: Untagged
@@ -1208,6 +1251,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &170634918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170634912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!1 &187072307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,6 +1284,7 @@ GameObject:
   - component: {fileID: 187072309}
   - component: {fileID: 187072311}
   - component: {fileID: 187072312}
+  - component: {fileID: 187072313}
   m_Layer: 0
   m_Name: bookShelf
   m_TagString: Untagged
@@ -1351,6 +1415,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 0
   runOnlyOnce: 0
+--- !u!114 &187072313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187072307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!1 &189042758
 GameObject:
   m_ObjectHideFlags: 0
@@ -4356,7 +4440,7 @@ GameObject:
   m_Component:
   - component: {fileID: 240551202}
   m_Layer: 0
-  m_Name: Passive Objects
+  m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4590,7 +4674,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliders: []
   startColor: {r: 0, g: 0, b: 0, a: 0}
-  canSeeFrom: 3
+  canSeeFrom: 0
   renderer: {fileID: 0}
   isScaling: 0
   activeFrom: 1
@@ -5150,6 +5234,7 @@ GameObject:
   - component: {fileID: 520197595}
   - component: {fileID: 520197594}
   - component: {fileID: 520197593}
+  - component: {fileID: 520197597}
   m_Layer: 0
   m_Name: bookShelf (3)
   m_TagString: Untagged
@@ -5280,6 +5365,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &520197597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520197591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!1 &528131226
 GameObject:
   m_ObjectHideFlags: 0
@@ -5293,6 +5398,7 @@ GameObject:
   - component: {fileID: 528131230}
   - component: {fileID: 528131229}
   - component: {fileID: 528131228}
+  - component: {fileID: 528131232}
   m_Layer: 0
   m_Name: bookShelf (4)
   m_TagString: Untagged
@@ -5423,6 +5529,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &528131232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528131226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!1 &586236541
 GameObject:
   m_ObjectHideFlags: 0
@@ -8025,6 +8151,7 @@ GameObject:
   - component: {fileID: 680151937}
   - component: {fileID: 680151939}
   - component: {fileID: 680151940}
+  - component: {fileID: 680151941}
   m_Layer: 0
   m_Name: plant
   m_TagString: Untagged
@@ -8145,6 +8272,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 0.5
   runOnlyOnce: 0
+--- !u!114 &680151941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680151935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!1 &682707992
 GameObject:
   m_ObjectHideFlags: 0
@@ -8158,6 +8305,7 @@ GameObject:
   - component: {fileID: 682707994}
   - component: {fileID: 682707996}
   - component: {fileID: 682707997}
+  - component: {fileID: 682707998}
   m_Layer: 0
   m_Name: bookShelf (1)
   m_TagString: Untagged
@@ -8288,6 +8436,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 0
   runOnlyOnce: 0
+--- !u!114 &682707998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682707992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!1 &683571300
 GameObject:
   m_ObjectHideFlags: 0
@@ -8503,6 +8671,7 @@ GameObject:
   - component: {fileID: 864245569}
   - component: {fileID: 864245571}
   - component: {fileID: 864245572}
+  - component: {fileID: 864245573}
   m_Layer: 0
   m_Name: bookShelf (3)
   m_TagString: Untagged
@@ -8633,6 +8802,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 0
   runOnlyOnce: 0
+--- !u!114 &864245573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864245567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!1001 &887870264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8961,6 +9150,26 @@ MonoBehaviour:
   isScaling: 0
   minimumScaleFactor: 1
   maximumScaleFactor: 3
+--- !u!1 &1089110526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7949855821716045241, guid: d469f52fda1b9324dbee6ae8f6b359a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7949855820157754125}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1089110532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089110526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae0ea69b06914c478cce8d3111a24aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0.46
+  runOnlyOnce: 0
 --- !u!1 &1128940387
 GameObject:
   m_ObjectHideFlags: 0
@@ -9095,6 +9304,7 @@ GameObject:
   - component: {fileID: 1212983746}
   - component: {fileID: 1212983745}
   - component: {fileID: 1212983744}
+  - component: {fileID: 1212983748}
   m_Layer: 0
   m_Name: bookShelf (2)
   m_TagString: Untagged
@@ -9225,6 +9435,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1212983748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212983742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!1 &1302643791
 GameObject:
   m_ObjectHideFlags: 0
@@ -9797,7 +10027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliders: []
   startColor: {r: 0, g: 0, b: 0, a: 0}
-  canSeeFrom: 3
+  canSeeFrom: 0
   renderer: {fileID: 0}
   isScaling: 0
   activeFrom: 1
@@ -10025,7 +10255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliders: []
   startColor: {r: 0, g: 0, b: 0, a: 0}
-  canSeeFrom: 1
+  canSeeFrom: 0
   renderer: {fileID: 0}
   isScaling: 0
   activeFrom: 2
@@ -10717,7 +10947,7 @@ PrefabInstance:
     - target: {fileID: 2815418055051505032, guid: eea4651422f24874dadd59e3f4935647,
         type: 3}
       propertyPath: canSeeFrom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eea4651422f24874dadd59e3f4935647, type: 3}
@@ -11204,6 +11434,7 @@ GameObject:
   - component: {fileID: 1627485515}
   - component: {fileID: 1627485514}
   - component: {fileID: 1627485513}
+  - component: {fileID: 1627485517}
   m_Layer: 0
   m_Name: bookShelf (1)
   m_TagString: Untagged
@@ -11334,6 +11565,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1627485517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627485511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!4 &1677237893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6853851060136457871, guid: 542c371e8542b7b4ca65a1c9bdd13540,
@@ -11480,6 +11731,26 @@ MonoBehaviour:
   isScaling: 0
   minimumScaleFactor: 1
   maximumScaleFactor: 3
+--- !u!1 &1825136376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7949855821257621924, guid: d469f52fda1b9324dbee6ae8f6b359a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7949855820157754125}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1825136382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825136376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ae0ea69b06914c478cce8d3111a24aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0
+  runOnlyOnce: 0
 --- !u!1001 &1969626908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11567,6 +11838,7 @@ GameObject:
   - component: {fileID: 1981745325}
   - component: {fileID: 1981745327}
   - component: {fileID: 1981745328}
+  - component: {fileID: 1981745329}
   m_Layer: 0
   m_Name: bookShelf (2)
   m_TagString: Untagged
@@ -11697,6 +11969,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: 0
   runOnlyOnce: 0
+--- !u!114 &1981745329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981745323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bd76d2c54b13f4296f55b80fad16ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders: []
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  canSeeFrom: 2
+  renderer: {fileID: 0}
+  isScaling: 0
+  activeFrom: 0
+  activeTo: 0
+  offset: 0
 --- !u!1 &2021252846
 GameObject:
   m_ObjectHideFlags: 0
@@ -12170,7 +12462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   colliders: []
   startColor: {r: 0, g: 0, b: 0, a: 0}
-  canSeeFrom: 1
+  canSeeFrom: 0
   renderer: {fileID: 0}
   isScaling: 0
   activeFrom: 2
@@ -12535,15 +12827,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1342976388}
     m_Modifications:
-    - target: {fileID: 2815418054685409536, guid: eea4651422f24874dadd59e3f4935647,
-        type: 3}
-      propertyPath: maximumScaleFactor
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2815418054685409537, guid: eea4651422f24874dadd59e3f4935647,
         type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 2815418054685409537, guid: eea4651422f24874dadd59e3f4935647,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2815418054685409539, guid: eea4651422f24874dadd59e3f4935647,
         type: 3}
@@ -12739,6 +13031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6853851060136457870, guid: 542c371e8542b7b4ca65a1c9bdd13540,
         type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6853851060136457870, guid: 542c371e8542b7b4ca65a1c9bdd13540,
+        type: 3}
       propertyPath: m_TagString
       value: Cheese
       objectReference: {fileID: 0}
@@ -12820,6 +13117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Mouse
+      objectReference: {fileID: 0}
+    - target: {fileID: 7949855820906897106, guid: d469f52fda1b9324dbee6ae8f6b359a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7949855820906897132, guid: d469f52fda1b9324dbee6ae8f6b359a5,
         type: 3}
@@ -12945,133 +13247,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bed
       objectReference: {fileID: 0}
-    - target: {fileID: 8260449988742924232, guid: 8b41a70a773c54c43aab5643825ce8c9,
+    - target: {fileID: 8260449988637208479, guid: 8b41a70a773c54c43aab5643825ce8c9,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8260449988742924234, guid: 8b41a70a773c54c43aab5643825ce8c9,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.6343031
-      objectReference: {fileID: 0}
-    - target: {fileID: 8260449988742924234, guid: 8b41a70a773c54c43aab5643825ce8c9,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -0.18783045
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b41a70a773c54c43aab5643825ce8c9, type: 3}
---- !u!1 &8260449987700961670 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8260449989589583609, guid: 8b41a70a773c54c43aab5643825ce8c9,
-    type: 3}
-  m_PrefabInstance: {fileID: 8260449987700961669}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &8260449987700961671
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8260449987700961670}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.8124584, y: -0.43752682}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.75, y: 1}
-    newSize: {x: 1.75, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.12451911, y: 0.12461877}
-  m_EdgeRadius: 0
---- !u!61 &8260449987700961672
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8260449987700961670}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.7495873, y: -0.4378487}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.75, y: 1}
-    newSize: {x: 1.75, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.12565565, y: 0.124334574}
-  m_EdgeRadius: 0
---- !u!61 &8260449987700961673
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8260449987700961670}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.8121512, y: 0.06282437}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.75, y: 1}
-    newSize: {x: 1.75, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.12504101, y: 0.12371993}
-  m_EdgeRadius: 0
---- !u!61 &8260449987700961674
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8260449987700961670}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.7495873, y: 0.062209725}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.75, y: 1}
-    newSize: {x: 1.75, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.12565565, y: 0.12494922}
-  m_EdgeRadius: 0
 --- !u!1 &8260449989593871372
 GameObject:
   m_ObjectHideFlags: 0
