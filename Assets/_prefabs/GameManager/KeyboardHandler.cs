@@ -64,11 +64,8 @@ public class KeyboardHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl))
             player.Talk();
 
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftControl))
-            player.MoveMovable();
-
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.LeftControl))
-            player.LeaveMovable();
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl))
+            player.HandleMovable();
 
         // ZOOM
         int zoomDirection = 0;

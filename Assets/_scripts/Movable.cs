@@ -50,15 +50,13 @@ public class Movable : MonoBehaviour
 
     internal void StartMoving(Transform player)
     {
-        IgnoreCollisionsWith(player, true);
-        transform.parent = player;
         rb.isKinematic = true;
+        IgnoreCollisionsWith(player, true);
     }
 
 
     internal void StopMoving(Transform player)
     {
-        transform.parent = null;
         rb.isKinematic = false;
         IgnoreCollisionsWith(player, false);
     }
