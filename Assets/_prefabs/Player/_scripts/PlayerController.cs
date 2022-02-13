@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     // Talk
     public Talk talkTo;
     private bool talking;
+    public bool IsTalking { get { return talking; } }
 
     // Move Object
     public Movable movable;

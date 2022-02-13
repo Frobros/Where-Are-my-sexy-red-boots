@@ -85,12 +85,12 @@ public class KeyboardHandler : MonoBehaviour
         if (zoomDirection != 0)
             player.ScaleTo(zoomDirection);
 
-        // RELOAD
-        if (Input.GetKeyDown(KeyCode.R))
+        // TODO: create an event that closes the textbox instead of !player.IsTalking condition
+        if (Input.GetKeyDown(KeyCode.R) && !player.IsTalking)
             FindObjectOfType<GameManager>().ReloadScene();
 
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // TODO: create an event that closes the textbox instead of !player.IsTalking condition
+        if (Input.GetKeyDown(KeyCode.Escape) && !player.IsTalking)
             FindObjectOfType<GameManager>().LoadScene("0_title");
     }
 
