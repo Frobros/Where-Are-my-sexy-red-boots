@@ -12886,6 +12886,16 @@ PrefabInstance:
       propertyPath: activeFrom
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3382919014197198734, guid: 542c371e8542b7b4ca65a1c9bdd13540,
+        type: 3}
+      propertyPath: offset
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382919014500355410, guid: 542c371e8542b7b4ca65a1c9bdd13540,
+        type: 3}
+      propertyPath: offset
+      value: 0.18
+      objectReference: {fileID: 0}
     - target: {fileID: 3382919014500355420, guid: 542c371e8542b7b4ca65a1c9bdd13540,
         type: 3}
       propertyPath: activeTo
@@ -12915,6 +12925,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Cheese
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443938580306294572, guid: 542c371e8542b7b4ca65a1c9bdd13540,
+        type: 3}
+      propertyPath: offset
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 6853851060136457859, guid: 542c371e8542b7b4ca65a1c9bdd13540,
         type: 3}
