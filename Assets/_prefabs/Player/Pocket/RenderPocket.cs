@@ -21,7 +21,7 @@ public class RenderPocket : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pocket.isPocketScalingChildren())
+        if (pocket.isScalingChildren())
         {
             spriteRenderer.sprite = isPocketScalingChildren;
         }

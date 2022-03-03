@@ -5,7 +5,7 @@ public class PlayerAnimate : MonoBehaviour
 {
     private PlayerController player;
     private Animator animator;
-    private bool facingRight = true;
+    public bool isFacingRight = true;
 
     private void Start()
     {
@@ -22,9 +22,9 @@ public class PlayerAnimate : MonoBehaviour
 
     private void Flip()
     {
-        if (facingRight && player.moveDirection.x < 0)
+        if (isFacingRight && player.moveDirection.x < 0)
         {
-            facingRight = false;
+            isFacingRight = false;
             
             transform.localScale = new Vector3(
                 -Mathf.Abs(transform.localScale.x),
@@ -32,9 +32,9 @@ public class PlayerAnimate : MonoBehaviour
                 transform.localScale.z
             );
         }
-        else if (!facingRight && player.moveDirection.x > 0)
+        else if (!isFacingRight && player.moveDirection.x > 0)
         {
-            facingRight = true;
+            isFacingRight = true;
             transform.localScale = new Vector3(
                 Mathf.Abs(transform.localScale.x),
                 transform.localScale.y,

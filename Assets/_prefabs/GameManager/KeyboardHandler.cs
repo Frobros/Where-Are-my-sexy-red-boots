@@ -64,11 +64,8 @@ public class KeyboardHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl))
             player.Talk();
 
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.LeftControl))
-            player.MoveMovable();
-
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.LeftControl))
-            player.LeaveMovable();
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.LeftControl))
+            player.HandleMovable();
 
         // ZOOM
         int zoomDirection = 0;
@@ -88,12 +85,12 @@ public class KeyboardHandler : MonoBehaviour
         if (zoomDirection != 0)
             player.ScaleTo(zoomDirection);
 
-        // RELOAD
-        if (Input.GetKeyDown(KeyCode.R))
+        // TODO: create an event that closes the textbox instead of !player.IsTalking condition
+        if (Input.GetKeyDown(KeyCode.R) && !player.IsTalking)
             FindObjectOfType<GameManager>().ReloadScene();
 
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        // TODO: create an event that closes the textbox instead of !player.IsTalking condition
+        if (Input.GetKeyDown(KeyCode.Escape) && !player.IsTalking)
             FindObjectOfType<GameManager>().LoadScene("0_title");
     }
 

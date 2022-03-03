@@ -217,7 +217,6 @@ public class ScaleManager : MonoBehaviour
     // Instead of reusing the method above, use this to abort successfully!
     private WaitUntil _WaitUntilScalingAborted(float scaleDuration, int fromLevel, int toLevel, float fromDepth, float toDepth, Vector3 fromScale, Vector3 toScale)
     {
-        Debug.LogWarning("START ABORTION!");
         float scalingProgress;
         return new WaitUntil(() =>
         {
