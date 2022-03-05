@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Debug.LogWarning(gameObject.name);
             Destroy(gameObject);
         }
         else
