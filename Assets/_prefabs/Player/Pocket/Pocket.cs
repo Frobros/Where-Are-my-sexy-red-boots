@@ -75,7 +75,7 @@ public class Pocket : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (!_isScaling)
+        if (!_isScaling && !other.CompareTag("PreventArea"))
         {
             Scalable scalable = other.GetComponentInParent<Scalable>();
             if (scalable != null && isNewScalable(scalable)) {
@@ -86,9 +86,8 @@ public class Pocket : MonoBehaviour
     
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!isScalingChildren())
+        if (!isScalingChildren() && !other.CompareTag("PreventArea"))
         {
-
             Scalable scalable = other.GetComponentInParent<Scalable>();
             if (scalable != null && !isNewScalable(scalable))
             {

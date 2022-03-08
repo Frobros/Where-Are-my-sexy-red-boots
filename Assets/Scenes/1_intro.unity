@@ -7811,6 +7811,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 666801531}
+  - component: {fileID: 666801533}
+  - component: {fileID: 666801532}
   m_Layer: 0
   m_Name: Overlays
   m_TagString: Untagged
@@ -7834,6 +7836,45 @@ Transform:
   m_Father: {fileID: 2142035031352676698}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &666801532
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666801530}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.031636, y: 8.009929}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 8.1931305, y: 3.9801426}
+  m_EdgeRadius: 0
+--- !u!114 &666801533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666801530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85474232d40c4174bb3fa7c79288e6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overlay: {fileID: 42997757}
 --- !u!1 &680151935
 GameObject:
   m_ObjectHideFlags: 0
@@ -8903,7 +8944,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1247599059
 Transform:
   m_ObjectHideFlags: 0
@@ -12337,7 +12378,7 @@ PrefabInstance:
     - target: {fileID: 5626681562695728766, guid: 043372d2ec9630c4fb162eb511d448bf,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 043372d2ec9630c4fb162eb511d448bf, type: 3}
