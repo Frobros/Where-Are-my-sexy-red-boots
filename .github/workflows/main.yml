@@ -1,4 +1,4 @@
-name: GameCI Template 🎮
+name: Test, Build, and Deploy via GameCI and Butler  🎮
 
 on:
   push:
